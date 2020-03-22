@@ -18,3 +18,4 @@ sqlparse==0.3.0
 tzlocal==2.0.0
 urllib3==1.25.3
 whitenoise==4.1.4
+wincertstore==0.2
