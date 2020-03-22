@@ -10,16 +10,18 @@ https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 heroku login
 heroku addons:create heroku-postgresql:hobby-dev
 
-
-heroku git:remote -a <yourapp>
 git remote -v
 heroku list
 heroku info --app <app name>
+
+heroku git:remote -a <yourapp>
 git remote add heroku <git url>
 
 
-git add -A
+
 git status
+
+git add -A
 git commit -m "test"
 git push origin master
 git push heroku master
