@@ -7,6 +7,11 @@ https://git-scm.com/downloads
 heroku 설치
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
+
+- git repository 생성
+-
+
+
 heroku login
 heroku addons:create heroku-postgresql:hobby-dev
 
