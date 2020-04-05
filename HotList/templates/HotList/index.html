@@ -14,6 +14,7 @@
 
 
 <body>
+<p id="demo"></p>
 
 <div class="Logo">
     <a href="http://matjarang.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
@@ -49,7 +50,6 @@
 
 </table>
 
-<!--<a class="btn btn-default pull_right">글쓰기</a>-->
 
 <div style="text-align:center;">
     <ul class="pagination justify-content-center">
@@ -58,18 +58,20 @@
             <li class="page-item">
                 <a href="?page=1" class="page-link">&laquo;</a>
             </li>
+        {% endif %}
+        {% if posts.has_previous_4 %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ posts.previous_page_number }}" tabindex="-1">&lt;
-                </a>
+                <a class="page-link" href="?page={{ posts.previous_page_number_4 }}">&lt;</a>
             </li>
         {% endif %}
+
         <!-- 페이지 범위 및 현재 페이지 -->
         {% for page in paginator_range %}
             {% if posts.number == page %}
                 <li class="page-item active">
-                                        <span class="page-link">{{ page }}
-                                            <span class="sr-only">(current)</span>
-                                        </span>
+                    <span class="page-link">{{ page }}
+                        <span class="sr-only">(current)</span>
+                    </span>
                 </li>
             {% else %}
                 <li class="page-item">
@@ -77,15 +79,20 @@
                 </li>
             {% endif %}
         {% endfor %}
+
         <!-- 다음 페이지 -->
-        {% if posts.has_next %}
+        {% if posts.has_next_4 %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ posts.next_page_number }}">&gt;</a>
+                <a class="page-link" href="?page={{ posts.next_page_number_4 }}">&gt;</a>
             </li>
+        {% endif %}
+        {% if posts.has_next %}
             <li class="page-item">
                 <a href="?page={{ posts.paginator.num_pages }}" class="page-link">&raquo;</a>
             </li>
         {% endif %}
+
+
     </ul>
 </div>
 </body>

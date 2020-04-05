@@ -24,7 +24,7 @@ def index(request):
     posts = paginator.get_page(page)
 
     # [2]
-    page_numbers_range = 6
+    page_numbers_range = 4
 
     # [3]
     max_index = len(paginator.page_range)
@@ -36,6 +36,7 @@ def index(request):
     if end_index >= max_index:
         end_index = max_index
     paginator_range = paginator.page_range[start_index:end_index]
+
 
     return render(request, 'HotList/index.html', {
         'HotLists': HotLists, 'posts': posts, 'paginator_range': paginator_range
