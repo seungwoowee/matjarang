@@ -40,7 +40,7 @@ heroku run python3 parser.py
 heroku run bash --app matjarang
 python3 manage.py makemigrations
 python3 manage.py migrate
-
+heroku run bash --app matjarang
 pip freeze > requirements.txt
 git add -A
 git commit -m "test"
