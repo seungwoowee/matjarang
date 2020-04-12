@@ -623,13 +623,13 @@ if __name__ == '__main__':
     parsed_data_hoobang_slr = SLR_hoobang_parsing()
     parsed_data_hoobang_clien = clien_hoobang_parsing()
     parsed_data_hoobang_bobae = bobae_hoobang_parsing()
-    parsed_data_hoobang_ppomppu = ppomppu_hoobang_parsing()
+    # parsed_data_hoobang_ppomppu = ppomppu_hoobang_parsing()
 
     parsed_data_hoobang.extend(parsed_data_hoobang_ou)
     parsed_data_hoobang.extend(parsed_data_hoobang_slr)
     parsed_data_hoobang.extend(parsed_data_hoobang_clien)
     parsed_data_hoobang.extend(parsed_data_hoobang_bobae)
-    parsed_data_hoobang.extend(parsed_data_hoobang_ppomppu)
+    # parsed_data_hoobang.extend(parsed_data_hoobang_ppomppu)
 
     parsed_data_hoobang = sorted(parsed_data_hoobang, key=itemgetter('day'), reverse=1)
 
