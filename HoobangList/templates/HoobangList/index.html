@@ -40,12 +40,9 @@
     {% for HoobangList in posts %}
         <tr>
             <td><a href={{ HoobangList.link }}>
-                {{ HoobangList.title }}</a></td>
-            <td>  </td>
-        </tr>
-        <tr>
-            <td>{{ HoobangList.date }}</td>
-            <td>{{ HoobangList.source }}</td>
+                {{ HoobangList.title }}</a>
+            <br>{{ HoobangList.date }}</td>
+            <td> <br>{{ HoobangList.source }}</td>
         </tr>
 
     {% endfor %}

@@ -41,12 +41,9 @@
     {% for HotList in posts %}
         <tr>
             <td><a href={{ HotList.link }}>
-                {{ HotList.title }}</a></td>
-            <td>  </td>
-        </tr>
-        <tr>
-            <td>{{ HotList.date }}</td>
-            <td>{{ HotList.source }}</td>
+                {{ HotList.title }}</a>
+            <br>{{ HotList.date }}</td>
+            <td> <br>{{ HotList.source }}</td>
         </tr>
     {% endfor %}
     </tbody>
