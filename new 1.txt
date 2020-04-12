@@ -1,34 +1,46 @@
-python 설치
+# python 설치
 https://www.python.org/downloads/
 
-git 설치
+# git 설치
 https://git-scm.com/downloads
 
-heroku 설치
+# heroku 설치
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
+# superuser 삭제
+python manage.py shell
+>> from django.contrib.auth.models import USER
+>> User.objectsget(username="ID", is_superuser=True).delete()
 
-- git repository 생성
+# superuser 생성
+heroku run python manage.py createsuperuser
 
+
+# heroku 초기 설정
 heroku login
-heroku list
-heroku info --app <app name>
 heroku git:remote -a <yourapp>
 heroku addons:create heroku-postgresql:hobby-dev
 
+-> heroku upload 하면 Procfile 생성됨
+-> scheduler 설정
+
+# heroku 설정 확인
+heroku list
+heroku info --app <app name>
+
+# git repository 생성
 git remote -v
 git remote add heroku <git url>
-
-
-
 git status
 
+# 실행
 git add -A
 git commit -m "test"
 git push origin master
 git push heroku master
 heroku run python3 parser.py
 
+# parsing data 삭제
 heroku run python3 parser_delete.py
 
 heroku run python3 manage.py makemigrations

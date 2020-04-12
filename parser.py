@@ -573,15 +573,15 @@ if __name__ == '__main__':
     parsed_data = []
     parsed_data_ou = ou_parsing()
     parsed_data_slr = SLR_parsing()
-    # parsed_data_clien = clien_parsing()
-    # parsed_data_ppomppu = ppomppu_parsing()
-    # parsed_data_bobae = bobae_parsing()
+    parsed_data_clien = clien_parsing()
+    parsed_data_ppomppu = ppomppu_parsing()
+    parsed_data_bobae = bobae_parsing()
 
     parsed_data.extend(parsed_data_ou)
     parsed_data.extend(parsed_data_slr)
-    # parsed_data.extend(parsed_data_clien)
-    # parsed_data.extend(parsed_data_ppomppu)
-    # parsed_data.extend(parsed_data_bobae)
+    parsed_data.extend(parsed_data_clien)
+    parsed_data.extend(parsed_data_ppomppu)
+    parsed_data.extend(parsed_data_bobae)
 
     ''' DB 읽기 '''
     json_data = DB_json()
@@ -621,15 +621,15 @@ if __name__ == '__main__':
     # parsed_data_hoobang = ygosu_hoobang_parsing()
     parsed_data_hoobang_ou = ou_hoobang_parsing()
     parsed_data_hoobang_slr = SLR_hoobang_parsing()
-    # parsed_data_hoobang_clien = clien_hoobang_parsing()
-    # parsed_data_hoobang_bobae = bobae_hoobang_parsing()
-    # parsed_data_hoobang_ppomppu = ppomppu_hoobang_parsing()
+    parsed_data_hoobang_clien = clien_hoobang_parsing()
+    parsed_data_hoobang_bobae = bobae_hoobang_parsing()
+    parsed_data_hoobang_ppomppu = ppomppu_hoobang_parsing()
 
     parsed_data_hoobang.extend(parsed_data_hoobang_ou)
     parsed_data_hoobang.extend(parsed_data_hoobang_slr)
-    # parsed_data_hoobang.extend(parsed_data_hoobang_clien)
-    # parsed_data_hoobang.extend(parsed_data_hoobang_bobae)
-    # parsed_data_hoobang.extend(parsed_data_hoobang_ppomppu)
+    parsed_data_hoobang.extend(parsed_data_hoobang_clien)
+    parsed_data_hoobang.extend(parsed_data_hoobang_bobae)
+    parsed_data_hoobang.extend(parsed_data_hoobang_ppomppu)
 
     parsed_data_hoobang = sorted(parsed_data_hoobang, key=itemgetter('day'), reverse=1)
 
