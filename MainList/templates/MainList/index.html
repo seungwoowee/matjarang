@@ -40,16 +40,14 @@
     </tr>
     </thead>
     <tbody>
-
-    {% for HotList in posts %}
+    {% for HotList in HotLists %}
         <tr>
             <td class="title"><a href={{ HotList.link }}>
-                <br>{{ HotList.date }}</a></td>
-            <td class="source"> <br>{{ HotList.source }}</td>
+                {{ HotList.title }} <br>{{ HotList.date }}</a></td>
+
+            <td class="source"><br>{{ HotList.source }}</td>
         </tr>
     {% endfor %}
-
-
     </tbody>
 
 </table>
@@ -73,12 +71,11 @@
     {% for HoobangList in HoobangLists %}
         <tr>
             <td class="title"><a href={{ HoobangList.link }}>
+                {{ HoobangList.title }}</a>
                 <br>{{ HoobangList.date }}</a></td>
-            <td class="source"> <br>{{ HoobangList.source }}</td>
+            <td class="source"><br>{{ HoobangList.source }}</td>
         </tr>
-
     {% endfor %}
-
     </tbody>
 
 </table>
