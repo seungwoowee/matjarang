@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'j^vpj-2x-e+7mnr(pbaczr-&&qr(y(
 # DEBUG = False
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['matjarang.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['matjarang2.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
