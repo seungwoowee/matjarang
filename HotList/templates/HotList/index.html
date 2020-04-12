@@ -61,7 +61,7 @@
         {% endif %}
         {% if posts.has_previous_4 %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ posts.previous_page_number_4 }}">&lt;</a>
+                <a class="page-link" href="?page={{ posts.previous_page_number }}">&lt;</a>
             </li>
         {% endif %}
 
@@ -83,7 +83,7 @@
         <!-- 다음 페이지 -->
         {% if posts.has_next_4 %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ posts.next_page_number_4 }}">&gt;</a>
+                <a class="page-link" href="?page={{ posts.next_page_number }}">&gt;</a>
             </li>
         {% endif %}
         {% if posts.has_next %}
