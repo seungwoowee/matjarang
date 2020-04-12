@@ -40,10 +40,9 @@
     <tbody>
     {% for HotList in posts %}
         <tr>
-            <td><a href={{ HotList.link }}>
-                {{ HotList.title }}</a>
-            <br>{{ HotList.date }}</td>
-            <td> <br>{{ HotList.source }}</td>
+            <td class="title"><a href={{ HotList.link }}>
+                <br>{{ HotList.date }}</a></td>
+            <td class="source"> <br>{{ HotList.source }}</td>
         </tr>
     {% endfor %}
     </tbody>
