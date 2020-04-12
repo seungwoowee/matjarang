@@ -41,13 +41,10 @@
     </thead>
     <tbody>
     {% for HotList in HotLists %}
-        <tr>
-            <td class="title"><a href={{ HotList.link }}>
-                {{ HotList.title }} <br>{{ HotList.date }}</a></td>
-
+        <tr style = "cursor:pointer;" onClick = " location.href='{{ HotList.link }}' " onMouseOver = " indow.status = '{{ HotList.link }}' " onMouseOut = " window.status = '' " >
+            <td class="title"> {{ HotList.title }} <br>{{ HotList.date }}</td>
             <td class="source"><br>{{ HotList.source }}</td>
         </tr>
-
     {% endfor %}
     </tbody>
 
@@ -70,12 +67,10 @@
     </thead>
     <tbody>
     {% for HoobangList in HoobangLists %}
-        <tr>
-            <td class="title"><a href={{ HoobangList.link }}>
-                {{ HoobangList.title }} <br>{{ HoobangList.date }}</a> </td>
+        <tr style = "cursor:pointer;" onClick = " location.href='{{ HoobangList.link }}' " onMouseOver = " indow.status = '{{ HoobangList.link }}' " onMouseOut = " window.status = '' " >
+            <td class="title"> {{ HoobangList.title }} <br>{{ HoobangList.date }}</td>
             <td class="source"><br>{{ HoobangList.source }}</td>
         </tr>
-
     {% endfor %}
     </tbody>
 

@@ -39,12 +39,10 @@
     </thead>
     <tbody>
     {% for HotList in posts %}
-        <tr>
-            <td class="title"><a href={{ HotList.link }}>
-                {{ HotList.title }} <br>{{ HotList.date }}</a></td>
+        <tr style = "cursor:pointer;" onClick = " location.href='{{ HotList.link }}' " onMouseOver = " indow.status = '{{ HotList.link }}' " onMouseOut = " window.status = '' " >
+            <td class="title"> {{ HotList.title }} <br>{{ HotList.date }}</td>
             <td class="source"><br>{{ HotList.source }}</td>
         </tr>
-
     {% endfor %}
     </tbody>
 
