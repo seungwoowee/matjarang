@@ -40,10 +40,10 @@
     {% for HoobangList in posts %}
         <tr>
             <td class="title"><a href={{ HoobangList.link }}>
-                {{ HoobangList.title }}</a>
-                <br>{{ HoobangList.date }}</a></td>
+                {{ HoobangList.title }} <br>{{ HoobangList.date }}</a></td>
             <td class="source"><br>{{ HoobangList.source }}</td>
         </tr>
+
     {% endfor %}
     </tbody>
 
@@ -63,6 +63,9 @@
             </li>
         {% endif %}
 
+
+
+
         <!-- 페이지 범위 및 현재 페이지 -->
         {% for page in paginator_range %}
             {% if posts.number == page %}
@@ -79,6 +82,9 @@
         {% endfor %}
 
         <!-- 다음 페이지 -->
+
+
+
         {% if posts.has_next %}
             <li class="page-item">
                 <a class="page-link" href="?page={{ posts.next_page_number }}">&gt;</a>
@@ -87,6 +93,8 @@
                 <a href="?page={{ posts.paginator.num_pages }}" class="page-link">&raquo;</a>
             </li>
         {% endif %}
+
+
     </ul>
 </div>
 </body>

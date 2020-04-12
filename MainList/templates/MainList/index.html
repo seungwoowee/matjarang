@@ -47,6 +47,7 @@
 
             <td class="source"><br>{{ HotList.source }}</td>
         </tr>
+
     {% endfor %}
     </tbody>
 
@@ -55,7 +56,7 @@
 
 
 <div class="cafe_popular">
-    후방 인기글
+    후방 Top 10
     <a style="padding-right: 20px; color: Mediumslateblue; float: right;" href="/HoobangList"> <i
             class="fa fa-plus"></i></a>
 </div>
@@ -71,10 +72,10 @@
     {% for HoobangList in HoobangLists %}
         <tr>
             <td class="title"><a href={{ HoobangList.link }}>
-                {{ HoobangList.title }}</a>
-                <br>{{ HoobangList.date }}</a></td>
+                {{ HoobangList.title }} <br>{{ HoobangList.date }}</a> </td>
             <td class="source"><br>{{ HoobangList.source }}</td>
         </tr>
+
     {% endfor %}
     </tbody>
 
