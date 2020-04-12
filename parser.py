@@ -299,7 +299,7 @@ def ppomppu_parsing():
         url = 'http://www.ppomppu.co.kr/hot.php?id=&page={}'.format(
             page)
         #req = requests.get(url, headers=headers, verify=False)
-        req = requests.get(url, headers=headers, verify=False)
+        req = requests.get(url, verify=False)
         html = req.text
         soup = BS(html, "html.parser")
         table = soup.find('table', class_='board_table')
@@ -327,6 +327,207 @@ def ppomppu_parsing():
 
     # toJson(temp_list)
     return temp_list
+
+
+''' 후방주의 '''
+
+
+def ygosu_hoobang_parsing():
+    temp_dict = {}
+    temp_list = []
+
+    for page in range(1, 2):
+        url = 'https://www.ygosu.com/all_search/?type=board&add_search_log=Y&keyword=%E3%85%8E%E3%85%82&order=1&page={}' 'developers/what-http-headers-is-my-browser-sending'.format(
+            page)
+        req = requests.get(url, headers=headers)
+        html = req.text
+        soup = BS(html, "html.parser")
+        table = soup.find(class_="type_board2")
+        tits = table.find_all(class_="subject")
+        # counts = table.find_all(class_="read")
+        days = table.find_all(class_="date")
+
+        for tit, day in zip(tits, days):
+            title = tit.get_text()
+            link = tit.get('href')
+            # read = count.get_text()
+            date_p = day.get_text()
+            date = str(datetime.datetime.strptime(date_p, "%Y-%m-%d"))
+            # date = str(datetime.datetime.now().year) + "-" + str('%02d'%datetime.datetime.now().month) + "-" + str(
+            #    '%02d'%datetime.datetime.now().day) + " " + date_p
+            # temp_dict = {'day': date, 'title': title, 'count': read, 'link': link, 'image': image}
+            # temp_dict = {'day': date, 'title': title, 'count': read, 'link': link}
+            temp_dict = {'day': date, 'title': title, 'link': link, 'source': '와고'}
+            temp_list.append(temp_dict)
+
+    # toJson(temp_list)
+    return temp_list
+
+
+def ou_hoobang_parsing():
+    temp_dict = {}
+    temp_list = []
+
+    for page in range(1, 2):
+        url = 'http://www.todayhumor.co.kr/board/list.php?table=total&page={}&kind=total'.format(page)
+        req = requests.get(url, headers=headers)
+        time.sleep(10)
+        html = req.text
+        time.sleep(10)
+        soup = BS(html, "html.parser")
+
+        table = soup.find(class_="table_list")
+        tits = table.find_all(class_="subject")
+        counts = table.find_all(class_="hits")
+        days = table.find_all(class_="date")
+        for tit, count, day in zip(tits, counts, days):
+            title = tit.a.get_text()
+            link = 'http://www.todayhumor.co.kr' + tit.a.get('href')
+            read = count.get_text()
+            date_p = day.get_text()
+            date = str(datetime.datetime.strptime(date_p, "%y/%m/%d %H:%M"))
+            for hbkeyword in hbkeywords:
+                if hbkeyword in title:
+                    temp_dict = {'day': date, 'title': title, 'count': read, 'link': link, 'source': '오유'}
+                    temp_list.append(temp_dict)
+
+    return temp_list
+
+
+def SLR_hoobang_parsing():
+    temp_dict = {}
+    temp_list = []
+
+    url = 'http://www.slrclub.com/bbs/zboard.php?id=free'
+    req = requests.get(url, headers=headers)
+    html = req.text
+    soup = BS(html, "html.parser")
+    tits = soup.find_all(class_="sbj")
+    counts = soup.find_all(class_="list_click no_att")
+    days = soup.find_all(class_="list_date no_att")
+
+    for tit, count, day in zip(tits, counts, days):
+        title = tit.a.get_text()
+        link = 'http://www.slrclub.com/' + tit.a.get('href')
+        read = count.get_text()
+        date_p = day.get_text()
+        date_p1 = day.get_text()
+        date_p = str(datetime.datetime.now().year) + "-" + str(
+            '%02d' % datetime.datetime.now().month) + "-" + str(
+            '%02d' % datetime.datetime.now().day) + " " + date_p
+        now = datetime.datetime.now()
+        yesterday = now - timedelta(1)
+        if (str(now) < date_p):
+            date = str(datetime.datetime.now().year) + "-" + str(
+                '%02d' % yesterday.month) + "-" + str(
+                '%02d' % yesterday.day) + " " + date_p1
+        else:
+            date = str(datetime.datetime.now().year) + "-" + str(
+                '%02d' % datetime.datetime.now().month) + "-" + str(
+                '%02d' % datetime.datetime.now().day) + " " + date_p1
+        for hbkeyword in hbkeywords:
+            if hbkeyword in title:
+                temp_dict = {'day': date, 'title': title, 'count': read, 'link': link, 'source': 'SLR'}
+                temp_list.append(temp_dict)
+
+    # toJson(temp_list)
+    return temp_list
+
+
+def clien_hoobang_parsing():
+    temp_dict = {}
+    temp_list = []
+
+    for page in range(0, 1):
+        url = 'https://www.clien.net/service/board/park?&od=T31&po={}'.format(page)
+        req = requests.get(url, headers=headers, verify=False)
+        # cookies = {'session_id': 'CDNSEC=e19a50f57ff50fc4b8485dd88ef59115'}
+        # req = requests.get(url)
+        # req = urllib.request.Request(url)
+        # req = urllib.request.urlopen(req)
+        html = req.text
+        soup = BS(html, "html.parser")
+        table = soup.find(class_="list_content")
+        links = table.find_all(class_="list_subject")
+        tits = table.find_all(class_="subject_fixed")
+        counts = table.find_all(class_="hit")
+        days = table.find_all(class_="timestamp")
+
+        for link, tit, count, day in zip(links, tits, counts, days):
+            title = tit.get('title')
+            link = 'https://www.clien.net' + link.get('href')
+            read = count.get_text()
+            date = day.get_text()
+            for hbkeyword in hbkeywords:
+                if hbkeyword in title:
+                    temp_dict = {'day': date, 'title': title, 'count': read, 'link': link, 'source': '클량'}
+                    temp_list.append(temp_dict)
+
+    # toJson(temp_list)
+    return temp_list
+
+
+def bobae_hoobang_parsing():
+    temp_dict = {}
+    temp_list = []
+
+    for page in range(1, 2):
+        url = 'https://www.bobaedream.co.kr/list?code=freeb&s_cate=&maker_no=&model_no=&or_gu=10&or_se=desc&s_selday=&pagescale=30&info3=&noticeShow=&s_select=&s_key=&level_no=&vdate=&type=list&page={}'.format(
+            page)
+
+        req = requests.get(url, headers=headers, verify=False)
+        # time.sleep(10)
+        req.encoding = 'utf-8'
+        html = req.text
+        # time.sleep(10)
+        soup = BS(html, "html.parser")
+
+        table = soup.find(class_="clistTable02")
+        tits = table.find_all(class_="pl14")
+        counts = table.find_all(class_="count")
+        days = table.find_all(class_="date")
+        for tit, count, day in zip(tits, counts, days):
+            title = tit.a.get_text()
+            link = 'https://www.bobaedream.co.kr' + tit.a.get('href')
+            '''
+            # image
+            req = session.get(link, headers=headers)
+            soup = BS(req.text, "html.parser")
+            container = soup.find(class_='viewContent')
+            if container:
+                if container.find('video'):
+                    videotag = container.find('video')
+                    image = videotag.get('poster')
+                elif container.find('img'):
+                    imgtag = container.find('img')
+                    image = imgtag.get('src')
+                else:
+                    image = 'none'
+                    '''
+
+            read = count.get_text()
+            date_p = day.get_text()
+            date_p1 = day.get_text()
+            date_p = str(datetime.datetime.now().year) + "-" + str(
+                '%02d' % datetime.datetime.now().month) + "-" + str(
+                '%02d' % datetime.datetime.now().day) + " " + date_p
+            now = datetime.datetime.now()
+            yesterday = now - timedelta(1)
+            if (str(now) < date_p):
+                date = str(datetime.datetime.now().year) + "-" + str(
+                    '%02d' % yesterday.month) + "-" + str(
+                    '%02d' % yesterday.day) + " " + date_p1
+            else:
+                date = str(datetime.datetime.now().year) + "-" + str(
+                    '%02d' % datetime.datetime.now().month) + "-" + str(
+                    '%02d' % datetime.datetime.now().day) + " " + date_p1
+            for hbkeyword in hbkeywords:
+                if hbkeyword in title:
+                    temp_dict = {'day': date, 'title': title, 'count': read, 'link': link, 'source': '보배'}
+                    temp_list.append(temp_dict)
+    # toJson(temp_list)
+    return temp_list
+
 
 def DB_json():
     temp_dict = {}
@@ -413,3 +614,4 @@ if __name__ == '__main__':
                               # image=json_data[i]["image"]
                               )
         new_HotList.save()
+
