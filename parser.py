@@ -298,8 +298,11 @@ def ppomppu_parsing():
     for page in range(1, 2):
         url = 'http://www.ppomppu.co.kr/hot.php?id=&page={}'.format(
             page)
-        #req = requests.get(url, headers=headers, verify=False)
-        req = requests.get(url, verify=False)
+        try:
+            req = requests.get(url, headers=headers, verify=False)
+        except BaseException:
+            req = requests.get(url, verify=False)
+
         html = req.text
         soup = BS(html, "html.parser")
         table = soup.find('table', class_='board_table')
