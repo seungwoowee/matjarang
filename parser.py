@@ -299,26 +299,7 @@ def ppomppu_parsing():
         url = 'http://www.ppomppu.co.kr/hot.php?id=&page={}'.format(
             page)
         #req = requests.get(url, headers=headers, verify=False)
-        #req = requests.get(url, verify=False)
-
-        try:
-            req = requests.get(url, timeout=30)
-        except requests.ConnectionError as e:
-            print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
-            print(str(e))
-            continue
-        except requests.Timeout as e:
-            print("OOPS!! Timeout Error")
-            print(str(e))
-            continue
-        except requests.RequestException as e:
-            print("OOPS!! General Error")
-            print(str(e))
-            continue
-        except KeyboardInterrupt:
-            print("Someone closed the program")
-
-
+        req = requests.get(url, verify=False)
         html = req.text
         soup = BS(html, "html.parser")
         table = soup.find('table', class_='board_table')
@@ -590,18 +571,35 @@ def DB_json_hoobang():
 
 if __name__ == '__main__':
     parsed_data = []
-    parsed_data_ou = ou_parsing()
-    parsed_data_slr = SLR_parsing()
-    parsed_data_clien = clien_parsing()
-    parsed_data_ppomppu = ppomppu_parsing()
-    parsed_data_bobae = bobae_parsing()
+    try:
+        parsed_data_ou = ou_parsing()
+        parsed_data.extend(parsed_data_ou)
+    except BaseException as e: pass
 
-    parsed_data.extend(parsed_data_ppomppu)
-    parsed_data.extend(parsed_data_ou)
-    parsed_data.extend(parsed_data_slr)
-    parsed_data.extend(parsed_data_clien)
+    try:
+        parsed_data_slr = SLR_parsing()
+        parsed_data.extend(parsed_data_slr)
+    except BaseException as e: pass
 
-    parsed_data.extend(parsed_data_bobae)
+    try:
+        parsed_data_clien = clien_parsing()
+        parsed_data.extend(parsed_data_clien)
+    except BaseException as e: pass
+
+    try:
+        parsed_data_ppomppu = ppomppu_parsing()
+        parsed_data.extend(parsed_data_ppomppu)
+    except BaseException as e: pass
+
+    try:
+        parsed_data_bobae = bobae_parsing()
+        parsed_data.extend(parsed_data_bobae)
+    except BaseException as e: pass
+
+
+
+
+
 
     ''' DB 읽기 '''
     json_data = DB_json()
