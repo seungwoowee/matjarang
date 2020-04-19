@@ -299,7 +299,26 @@ def ppomppu_parsing():
         url = 'http://www.ppomppu.co.kr/hot.php?id=&page={}'.format(
             page)
         #req = requests.get(url, headers=headers, verify=False)
-        req = requests.get(url, verify=False)
+        #req = requests.get(url, verify=False)
+
+        try:
+            req = requests.get(url, timeout=30)
+        except requests.ConnectionError as e:
+            print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
+            print(str(e))
+            continue
+        except requests.Timeout as e:
+            print("OOPS!! Timeout Error")
+            print(str(e))
+            continue
+        except requests.RequestException as e:
+            print("OOPS!! General Error")
+            print(str(e))
+            continue
+        except KeyboardInterrupt:
+            print("Someone closed the program")
+
+
         html = req.text
         soup = BS(html, "html.parser")
         table = soup.find('table', class_='board_table')
@@ -574,13 +593,14 @@ if __name__ == '__main__':
     parsed_data_ou = ou_parsing()
     parsed_data_slr = SLR_parsing()
     parsed_data_clien = clien_parsing()
-    #parsed_data_ppomppu = ppomppu_parsing()
+    parsed_data_ppomppu = ppomppu_parsing()
     parsed_data_bobae = bobae_parsing()
 
+    parsed_data.extend(parsed_data_ppomppu)
     parsed_data.extend(parsed_data_ou)
     parsed_data.extend(parsed_data_slr)
     parsed_data.extend(parsed_data_clien)
-    #parsed_data.extend(parsed_data_ppomppu)
+
     parsed_data.extend(parsed_data_bobae)
 
     ''' DB 읽기 '''
