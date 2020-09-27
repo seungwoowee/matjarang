@@ -629,26 +629,26 @@ if __name__ == '__main__':
 
     HotList.objects.all().delete()
     for i in range(len(json_data)):
-        HotList = HotList(date=json_data[i]["day"],
+        new_HotList = HotList(date=json_data[i]["day"],
                               title=json_data[i]["title"],
                               count=json_data[i]["count"],
                               link=json_data[i]["link"],
                               source=json_data[i]["source"]
                               # image=json_data[i]["image"]
                               )
-        HotList.save()
-    #
-    # HoobangCandidates = HotList.objects.filter(
-    #     Q(title__icontains='ㅎㅂ') | Q(title__icontains='후방') | Q(title__icontains='맥심') | Q(title__icontains='섹스') | Q(
-    #         title__icontains='19금') | Q(title__icontains='ㅅㅅ') | Q(title__icontains='신재은') | Q(
-    #         title__icontains='노출') | Q(title__icontains='도끼') | Q(title__icontains='조공'))
-    #
-    # for i in range(len(HoobangCandidates)):
-    #     append_flag = 1
-    #     for j in range(len(HoobangList)):
-    #         if HoobangCandidates[i].link == HoobangList[j].link:
-    #             append_flag = 0
-    #
-    #     if append_flag == 1:
-    #         HoobangList.append(HoobangCandidates[i])
-    # print(HoobangList)
+        new_HotList.save()
+
+    HoobangCandidates = HotList.objects.filter(
+        Q(title__icontains='ㅎㅂ') | Q(title__icontains='후방') | Q(title__icontains='맥심') | Q(title__icontains='섹스') | Q(
+            title__icontains='19금') | Q(title__icontains='ㅅㅅ') | Q(title__icontains='신재은') | Q(
+            title__icontains='노출') | Q(title__icontains='도끼') | Q(title__icontains='조공'))
+
+    for i in range(len(HoobangCandidates)):
+        append_flag = 1
+        for j in range(len(HoobangList)):
+            if HoobangCandidates[i].link == HoobangList[j].link:
+                append_flag = 0
+
+        if append_flag == 1:
+            HoobangList.append(HoobangCandidates[i])
+    print(HoobangList)
