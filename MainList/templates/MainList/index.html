@@ -11,18 +11,20 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/css/style-db8ba5b9e5.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script data-ad-client="ca-pub-8009071330781097" async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
 <body>
 
 <div class="Logo">
-    <a href="http://matjarang_sub.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
+    <a href="https://matjarang-sub.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
 </div>
 <div class="Category">
     <div class="HotList">
-        <a class="Hottxt" href="http://matjarang_sub.herokuapp.com/HotList/">실시간인기글</a>
-        <a href="http://matjarang_sub.herokuapp.com/HoobangList/"><img class="Hotpic" src="/static/img/hoobang.png"></a>
+        <a class="Hottxt" href="https://matjarang-sub.herokuapp.com/HotList/">실시간인기글</a>
+        <a href="https://matjarang-sub.herokuapp.com/HoobangList/"><img class="Hotpic" src="/static/img/hoobang.png"></a>
     </div>
 </div>
 
@@ -41,10 +43,14 @@
     </thead>
     <tbody>
     {% for HotList in HotLists %}
-        <tr style = "cursor:pointer;" onClick = " location.href='{{ HotList.link }}' " onMouseOver = " indow.status = '{{ HotList.link }}' " onMouseOut = " window.status = '' " >
-            <td class="title"> {{ HotList.title }} <br>{{ HotList.date }}</td>
+        <tr style="cursor:pointer;" onClick=" location.href='{{ HotList.link }}' "
+            onMouseOver=" indow.status = '{{ HotList.link }}' " onMouseOut=" window.status = '' ">
+            <td class="title">
+                {{ HotList.title }} <br>{{ HotList.date }}</td>
+
             <td class="source"><br>{{ HotList.source }}</td>
         </tr>
+
     {% endfor %}
     </tbody>
 
@@ -67,16 +73,19 @@
     </thead>
     <tbody>
     {% for HoobangList in HoobangLists %}
-        <tr style = "cursor:pointer;" onClick = " location.href='{{ HoobangList.link }}' " onMouseOver = " indow.status = '{{ HoobangList.link }}' " onMouseOut = " window.status = '' " >
-            <td class="title"> {{ HoobangList.title }} <br>{{ HoobangList.date }}</td>
+        <tr style="cursor:pointer;" onClick=" location.href='{{ HoobangList.link }}' "
+            onMouseOver=" indow.status = '{{ Hoobang.link }}' " onMouseOut=" window.status = '' ">
+            <td class="title">
+                {{ HoobangList.title }} <br>{{ HoobangList.date }} </td>
             <td class="source"><br>{{ HoobangList.source }}</td>
         </tr>
+
     {% endfor %}
     </tbody>
 
 </table>
-<!--<a class="btn btn-default pull_right">글쓰기</a>-->
-</body>
-
-
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({ id:326580 });
+</script>
 </body>

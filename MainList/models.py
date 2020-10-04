@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 class MainList(models.Model):
+    id = models.AutoField(primary_key=True)
     date = models.TextField(null=True)
     title = models.TextField(null=True)
     count = models.TextField(null=True)

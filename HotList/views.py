@@ -16,6 +16,20 @@ mobile_uas = [
 ]
 mobile_ua_hints = ['SymbianOS', 'Opera Mini', 'iPhone']
 
+'''
+def has_next_4(self):
+    return self.number + 4 <= self.paginator.num_pages
+
+
+def has_previous_4(self):
+    return self.number - 4 >= 1
+
+def next_page_number_4(self):
+    return math.ceil(self.paginator.validate_number(self.number)/4)*4+1
+
+def previous_page_number_4(self):
+    return math.floor((self.paginator.validate_number(self.number)-1)/4)*4-3
+'''
 
 def index(request):
     HotLists = HotList.objects.all()
@@ -32,12 +46,25 @@ def index(request):
     start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
     end_index = start_index + page_numbers_range
 
+
     # [4]
     if end_index >= max_index:
         end_index = max_index
     paginator_range = paginator.page_range[start_index:end_index]
 
 
+
     return render(request, 'HotList/index.html', {
         'HotLists': HotLists, 'posts': posts, 'paginator_range': paginator_range
+
     })
+
+
+
+
+def contents(request, pageid):
+    #pageid = HotList.id
+    HotLists = HotList.objects.all()
+    tttt = HotList.objects.get(id=pageid)
+    return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid, 'tttt': tttt})
+    # return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid})

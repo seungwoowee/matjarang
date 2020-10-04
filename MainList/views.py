@@ -22,6 +22,9 @@ def index(request):
     HoobangLists = HotList.objects.filter(
         Q(title__icontains='ㅎㅂ') | Q(title__icontains='후방') | Q(title__icontains='맥심') | Q(title__icontains='섹스') | Q(
             title__icontains='19금') | Q(title__icontains='ㅅㅅ') | Q(title__icontains='신재은') | Q(
-            title__icontains='노출') | Q(title__icontains='도끼') | Q(title__icontains='조공'))
+            title__icontains='노출') | Q(title__icontains='도끼') | Q(title__icontains='조공') | Q(title__icontains='ㅇㅎ') | Q(
+            title__icontains='ㅊㅈ') | Q(title__icontains='레이싱') | Q(title__icontains='모델') | Q(
+            title__icontains='치어리더') | Q(title__icontains='여고딩'))
+
     HoobangLists = HoobangLists.order_by('-date')[0:10]
     return render(request, 'MainList/index.html', {'HotLists': HotLists, 'HoobangLists': HoobangLists})
