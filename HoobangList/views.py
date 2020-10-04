@@ -49,7 +49,7 @@ def index(request):
 
 def contents(request, pageid):
     #pageid = HotList.id
-    HoobangList = HoobangList.objects.all()
-    tttt = HoobangList.objects.get(id=pageid)
-    return render(request, 'HoobangList/contents.html', {'HoobangLists': HoobangLists, 'pageid': pageid, 'tttt': tttt})
+    HotLists = HotList.objects.all()
+    tttt = HotList.objects.get(id=pageid)
+    return render(request, 'HoobangList/contents.html', {'HotLists': HotLists, 'pageid': pageid, 'tttt': tttt})
     # return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid})

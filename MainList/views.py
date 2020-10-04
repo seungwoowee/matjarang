@@ -28,3 +28,10 @@ def index(request):
 
     HoobangLists = HoobangLists.order_by('-date')[0:10]
     return render(request, 'MainList/index.html', {'HotLists': HotLists, 'HoobangLists': HoobangLists})
+
+def contents(request, pageid):
+    #pageid = HotList.id
+    HotLists = HotList.objects.all()
+    tttt = HotList.objects.get(id=pageid)
+    return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid, 'tttt': tttt})
+    # return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid})
