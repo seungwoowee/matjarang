@@ -53,6 +53,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 heroku run bash --app matjarang
 pip freeze > requirements.txt
+
 #가상환경
 .\venv\Scripts\activate.bat
 .\venv\Scripts\deactivate.bat
