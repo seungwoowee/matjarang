@@ -46,3 +46,10 @@ def index(request):
     return render(request, 'HoobangList/index.html', {
         'HoobangLists': HoobangLists, 'posts': posts, 'paginator_range': paginator_range
     })
+
+def contents(request, pageid):
+    #pageid = HotList.id
+    HoobangList = HoobangList.objects.all()
+    tttt = HoobangList.objects.get(id=pageid)
+    return render(request, 'HoobangList/contents.html', {'HoobangLists': HoobangLists, 'pageid': pageid, 'tttt': tttt})
+    # return render(request, 'HotList/contents.html', {'HotLists': HotLists, 'pageid': pageid})

@@ -14,12 +14,56 @@
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
+<p id="demo"></p>
+
+<div class="Logo">
+    <a href="https://matjarang-sub.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
+</div>
+<div class="Category">
+    <div class="HotList">
+        <a class="Hottxt" href="https://matjarang-sub.herokuapp.com/HotList/">실시간인기글</a>
+        <a href="https://matjarang-sub.herokuapp.com/HotList/"><img class="Hotpic"
+                                                                        src="/static/img/hoobang.png"></a>
+    </div>
+</div>
 
 <body>
 
-TEST
-{{pageid}}
-{{ tttt.title }}
 
 </body>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>미리보기</th>
+        <th>제목</th>
+        <th>출처</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr style="cursor:pointer;" onClick=" location.href='{{ tttt.link }}' "
+        onMouseOver=" indow.status = '{{ tttt.id }}' " onMouseOut=" window.status = '' ">
+        <td class="title">
+            {{tttt.image}}
+        </td>
+        <td class="title">
+            {{ tttt.title }} <br>{{ tttt.date }}
+        </td>
+        <td class="source"><br>{{ tttt.source }}</td>
+    </tr>
+
+
+    </tbody>
+
+</table>
+
+
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+    new PartnersCoupang.G({id: 326580});
+</script>
+
+
+
 

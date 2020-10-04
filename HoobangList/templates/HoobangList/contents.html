@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>맛자랑</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style-db8ba5b9e5.min.css" type="text/css">
+    <script data-ad-client="ca-pub-8009071330781097" async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<p id="demo"></p>
+
+<div class="Logo">
+    <a href="https://matjarang-sub.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
+</div>
+<div class="Category">
+    <div class="HoobangList">
+        <a class="Hottxt" href="https://matjarang-sub.herokuapp.com/HoobangList/">후방인기글</a>
+        <a href="https://matjarang-sub.herokuapp.com/HoobangList/"><img class="Hotpic"
+                                                                        src="/static/img/hoobang.png"></a>
+    </div>
+</div>
+
+<body>
+
+
+</body>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>미리보기</th>
+        <th>제목</th>
+        <th>출처</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr style="cursor:pointer;" onClick=" location.href='{{ tttt.link }}' "
+        onMouseOver=" indow.status = '{{ tttt.id }}' " onMouseOut=" window.status = '' ">
+        <td class="title">
+            {{tttt.image}}
+        </td>
+        <td class="title">
+            {{ tttt.title }} <br>{{ tttt.date }}
+        </td>
+        <td class="source"><br>{{ tttt.source }}</td>
+    </tr>
+
+
+    </tbody>
+
+</table>
+
+
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+    new PartnersCoupang.G({id: 326580});
+</script>
+
+
+
+
