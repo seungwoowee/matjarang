@@ -14,14 +14,13 @@ import requests
 from HotList.models import HotList
 from HoobangList.models import HoobangList
 from datetime import date, timedelta
-from django.db.models import Q
 
 session = requests.Session()
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763'}
+    'User-Agent': 'Mozilla/5.0 hb(Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763'}
 
 ''' 후방 키워드 '''
-hbkeywords = ['ㅎㅂ', '후방', '섹스', 'ㅅㅅ', 'ㅇㅎ', '은꼴', '맥심']
+hbkeywords = ['ㅎㅂ', '후방', '섹스', 'ㅅㅅ', 'ㅇㅎ', '은꼴', '맥심', '약후']
 
 
 def toJson(mnet_dict):
@@ -38,7 +37,7 @@ def ygosu_parsing():
     temp_dict = {}
     temp_list = []
 
-    for page in range(1, 2):
+    for page in range(1):
         url = 'https://www.ygosu.com/community/real_article?page={}' 'developers/what-http-headers-is-my-browser-sending'.format(
             page)
         req = requests.get(url, headers=headers)
@@ -52,6 +51,7 @@ def ygosu_parsing():
         for tit, count, day in zip(tits, counts, days):
             title = tit.a.get_text()
             link = tit.a.get('href')
+            link = 'https://m.ygosu.com/board/' + link[45:]
             '''
             ##image
             req = session.get(link, headers=headers)
@@ -299,11 +299,8 @@ def ppomppu_parsing():
     for page in range(1, 2):
         url = 'http://www.ppomppu.co.kr/hot.php?id=&page={}'.format(
             page)
-        try:
-            req = requests.get(url, headers=headers, verify=False)
-        except BaseException:
-            req = requests.get(url, verify=False)
-
+        # req = requests.get(url, headers=headers, verify=False)
+        req = requests.get(url, verify=False)
         html = req.text
         soup = BS(html, "html.parser")
         table = soup.find('table', class_='board_table')
@@ -575,35 +572,42 @@ def DB_json_hoobang():
 
 if __name__ == '__main__':
     parsed_data = []
+
     try:
         parsed_data_ou = ou_parsing()
         parsed_data.extend(parsed_data_ou)
-    except BaseException as e: pass
+    except BaseException as e:
+        pass
 
     try:
         parsed_data_slr = SLR_parsing()
         parsed_data.extend(parsed_data_slr)
-    except BaseException as e: pass
+    except BaseException as e:
+        pass
 
     try:
         parsed_data_clien = clien_parsing()
         parsed_data.extend(parsed_data_clien)
-    except BaseException as e: pass
+    except BaseException as e:
+        pass
 
     try:
         parsed_data_ppomppu = ppomppu_parsing()
         parsed_data.extend(parsed_data_ppomppu)
-    except BaseException as e: pass
+    except BaseException as e:
+        pass
 
     try:
         parsed_data_bobae = bobae_parsing()
         parsed_data.extend(parsed_data_bobae)
-    except BaseException as e: pass
+    except BaseException as e:
+        pass
 
-
-
-
-
+    try:
+        parsed_data_ygosu = ygosu_parsing()
+        parsed_data.extend(parsed_data_ygosu)
+    except BaseException as e:
+        pass
 
     ''' DB 읽기 '''
     json_data = DB_json()
@@ -623,32 +627,18 @@ if __name__ == '__main__':
     ''' 시간순 정렬 '''
     json_data = sorted(json_data, key=itemgetter('day'), reverse=1)
 
-    json_data = json_data[:100]
+    json_data = json_data[:1500]
+
     ''' 최종 out 저장 '''
     toJson(json_data)
 
     HotList.objects.all().delete()
     for i in range(len(json_data)):
-        HotList = HotList(date=json_data[i]["day"],
+        new_HotList = HotList(date=json_data[i]["day"],
                               title=json_data[i]["title"],
                               count=json_data[i]["count"],
                               link=json_data[i]["link"],
                               source=json_data[i]["source"]
                               # image=json_data[i]["image"]
                               )
-        HotList.save()
-    #
-    # HoobangCandidates = HotList.objects.filter(
-    #     Q(title__icontains='ㅎㅂ') | Q(title__icontains='후방') | Q(title__icontains='맥심') | Q(title__icontains='섹스') | Q(
-    #         title__icontains='19금') | Q(title__icontains='ㅅㅅ') | Q(title__icontains='신재은') | Q(
-    #         title__icontains='노출') | Q(title__icontains='도끼') | Q(title__icontains='조공'))
-    #
-    # for i in range(len(HoobangCandidates)):
-    #     append_flag = 1
-    #     for j in range(len(HoobangList)):
-    #         if HoobangCandidates[i].link == HoobangList[j].link:
-    #             append_flag = 0
-    #
-    #     if append_flag == 1:
-    #         HoobangList.append(HoobangCandidates[i])
-    # print(HoobangList)
+        new_HotList.save()
