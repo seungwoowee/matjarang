@@ -348,8 +348,9 @@ def DB_json():
         link = HotList.objects.all().values_list()[kk][4]
         date = HotList.objects.all().values_list()[kk][1]
         count = HotList.objects.all().values_list()[kk][3]
+        image = HotList.objects.all().values_list()[kk][5]
         source = HotList.objects.all().values_list()[kk][6]
-        temp_dict = {'day': date, 'title': title, 'link': link, 'count': count, 'source': source}
+        temp_dict = {'day': date, 'title': title, 'link': link, 'count': count, 'source': source, 'image': image}
         temp_list.append(temp_dict)
 
     # toJson(temp_list)
@@ -445,7 +446,7 @@ if __name__ == '__main__':
                               title=json_data[i]["title"],
                               count=json_data[i]["count"],
                               link=json_data[i]["link"],
-                              source=json_data[i]["source"]
-                              # image=json_data[i]["image"]
+                              source=json_data[i]["source"],
+                              image=json_data[i]["image"]
                               )
         new_HotList.save()
