@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MainList',
     'HotList',
-    'HoobangList'
+    'HoobangList',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,25 @@ STATICFILES_DIR = [
 # Static root를 지정하지 않으면 에러 발생
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # whitenoise 4 버전부터 설정이 바뀌었기 때문에 이 부분을 꼭 기존의 내용들에서 업데이트 해야 함
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'mysite.storages.MediaStorage'
+STATICFILES_STORAGE = 'mysite.storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+STATICFILES_LOCATION = 'static'
+
+
+from boto.s3.connection import S3Connection
+
+# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+AWS_STORAGE_BUCKET_NAME = 'jmatjarang-sub'
+
+AWS_S3_REGION_NAME = "ap-northeast-2"
+
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+
 
 import dj_database_url
 
