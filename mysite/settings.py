@@ -142,16 +142,20 @@ STATICFILES_STORAGE = 'mysite.storages.StaticStorage'
 MEDIAFILES_LOCATION = 'media'
 STATICFILES_LOCATION = 'static'
 
+AWS_ACCESS_KEY_ID = 'AKIAQHD5XNGBKS5MFNSA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'matjarang-sub'
 
-from boto.s3.connection import S3Connection
 
-# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
-
-AWS_STORAGE_BUCKET_NAME = 'jmatjarang-sub'
-
-AWS_S3_REGION_NAME = "ap-northeast-2"
-
-AWS_S3_SIGNATURE_VERSION = "s3v4"
+# from boto.s3.connection import S3Connection
+#
+# # s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+#
+# AWS_STORAGE_BUCKET_NAME = 'matjarang-sub'
+#
+# AWS_S3_REGION_NAME = "ap-northeast-2"
+#
+# AWS_S3_SIGNATURE_VERSION = "s3v4"
 
 
 import dj_database_url
