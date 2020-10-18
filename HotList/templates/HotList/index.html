@@ -60,8 +60,8 @@
                     <table>
                         <tbody>
                         {% for HotList in posts %}
-                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
-                            onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.link }}' "
+                            onMouseOver=" window.status = '{{ HotList.link }}' " onMouseOut=" window.status = '' ">
                             <td class="cell100 column1">
                                 {{ HotList.title }} <br>{{ HotList.date }}
                             </td>

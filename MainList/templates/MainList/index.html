@@ -85,8 +85,8 @@
                     <table>
                         <tbody>
                         {% for HotList in HotLists %}
-                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
-                            onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.link }}' "
+                            onMouseOver=" window.status = '{{ HotList.link }}' " onMouseOut=" window.status = '' ">
                             <td class="cell100 column1">
                                 {{ HotList.title }} <br>{{ HotList.date }}
                             </td>
@@ -115,8 +115,8 @@
                     <table>
                         <tbody>
                         {% for HoobangList in HoobangLists %}
-                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HoobangList.id }}' "
-                            onMouseOver=" window.status = '{{ HoobangList.id }}' " onMouseOut=" window.status = '' ">
+                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HoobangList.link }}' "
+                            onMouseOver=" window.status = '{{ HoobangList.link }}' " onMouseOut=" window.status = '' ">
                             <td class="cell100 column1">
                                 {{ HoobangList.title }} <br>{{ HoobangList.date }}
                             </td>
