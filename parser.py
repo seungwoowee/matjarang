@@ -52,24 +52,24 @@ def ygosu_parsing():
             title = tit.a.get_text()
             link = tit.a.get('href')
             link = 'https://m.ygosu.com/board/' + link[45:]
-            '''
             ##image
-            req = session.get(link, headers=headers)
-            soup = BS(req.text, "html.parser")
-            container = soup.find(class_='container')
-            if container:
-                if container.find('embed'):
-                    embedtag = container.find('embed')
-                    image = embedtag.get('src')
-                elif container.find('img'):
-                    imgtag = container.find('img')
-                    image = imgtag.get('src')
-                elif container.find('video'):
-                    imgtag = container.find('video')
-                    image = imgtag.get('src')
-                else:
-                    image = 'none'
-            '''
+            # req = session.get(link, headers=headers)
+            # soup = BS(req.text, "html.parser")
+            # container = soup.find(class_='contain')
+            # if container:
+            #     if container.find('embed'):
+            #         embedtag = container.find('embed')
+            #         image = embedtag.get('src')
+            #     elif container.find('img'):
+            #         imgtag = container.find('img')
+            #         image = imgtag.get('src')
+            #         savename = image.rsplit('/', 1)[1]
+            #         urllib.request.urlretrieve(image, './image/' + savename)
+            #     elif container.find('video'):
+            #         imgtag = container.find('video')
+            #         image = imgtag.get('src')
+            #     else:
+            #         image = 'none'
             read = count.get_text()
             date_p = day.get_text()
             # date_p = str(datetime.datetime.strptime(date_p, "%H:%M:%S"))

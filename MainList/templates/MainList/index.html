@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css">
     <script data-ad-client="ca-pub-8009071330781097" async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <!--===============================================================================================-->
+
 </head>
 
 
@@ -28,64 +45,272 @@
     </div>
 </div>
 
-<div class="cafe_popular">
-    실시간 Top 10
-    <a style="padding-right: 20px; color: Mediumslateblue; float: right;" href="/HotList"> <i
-            class="fa fa-plus"></i></a>
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+						{% for HotList in HotLists %}
+						<tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
+							onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+							<td class="cell100 column1">
+								{{ HotList.title }} <br>{{ HotList.date }}
+							</td>
+							<td class="cell100 column2"><br>{{ HotList.source }}</td>
+						</tr>
+
+						{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table100 ver2 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+						{% for HoobangList in HoobangLists %}
+						<tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HoobangList.id }}' "
+							onMouseOver=" window.status = '{{ HoobangList.id }}' " onMouseOut=" window.status = '' ">
+							<td class="cell100 column1">
+								{{ HoobangList.title }} <br>{{ HoobangList.date }}
+							</td>
+							<td class="cell100 column2"><br>{{ HoobangList.source }}</td>
+						</tr>
+
+						{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table100 ver3 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                                        <table>
+                        <tbody>
+						{% for HotList in HotLists %}
+						<tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
+							onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+							<td class="cell100 column1">
+								{{ HotList.title }} <br>{{ HotList.date }}
+							</td>
+							<td class="cell100 column2"><br>{{ HotList.source }}</td>
+						</tr>
+
+						{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table100 ver4 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                                        <table>
+                        <tbody>
+						{% for HotList in HotLists %}
+						<tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
+							onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+							<td class="cell100 column1">
+								{{ HotList.title }} <br>{{ HotList.date }}
+							</td>
+							<td class="cell100 column2"><br>{{ HotList.source }}</td>
+						</tr>
+
+						{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table100 ver5 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                                        <table>
+                        <tbody>
+						{% for HotList in HotLists %}
+						<tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
+							onMouseOver=" window.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
+							<td class="cell100 column1">
+								{{ HotList.title }} <br>{{ HotList.date }}
+							</td>
+							<td class="cell100 column2"><br>{{ HotList.source }}</td>
+						</tr>
+
+						{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>제목</th>
-        <th>출처</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for HotList in HotLists %}
-        <tr style="cursor:pointer;" onClick=" location.href='{{ HotList.id }}' "
-            onMouseOver=" indow.status = '{{ HotList.id }}' " onMouseOut=" window.status = '' ">
-            <td class="title">
-                {{ HotList.title }} <br>{{ HotList.date }}</td>
-
-            <td class="source"><br>{{ HotList.source }}</td>
-        </tr>
-
-    {% endfor %}
-    </tbody>
-
-</table>
-<!--<a class="btn btn-default pull_right">글쓰기</a>-->
-
 
 <div class="cafe_popular">
-    후방 Top 10
+    Youtube Top 10
     <a style="padding-right: 20px; color: Mediumslateblue; float: right;" href="/HoobangList"> <i
             class="fa fa-plus"></i></a>
 </div>
 
 <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>제목</th>
-        <th>출처</th>
-    </tr>
-    </thead>
     <tbody>
-    {% for HoobangList in HoobangLists %}
-        <tr style="cursor:pointer;" onClick=" location.href='{{ HoobangList.id }}' "
-            onMouseOver=" indow.status = '{{ HoobangList.id }}' " onMouseOut=" window.status = '' ">
-            <td class="title">
-                {{ HoobangList.title }} <br>{{ HoobangList.date }} </td>
-            <td class="source"><br>{{ HoobangList.source }}</td>
-        </tr>
+    <tr>
+        <td>
+            <style>.embed-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+            }
 
-    {% endfor %}
+            .embed-container iframe, .embed-container object, .embed-container embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }</style>
+            <div class='embed-container'>
+                <iframe src='https://www.youtube.com/embed/AM_8CuTZirM' frameborder='0' allowfullscreen></iframe>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <style>.embed-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+            }
+
+            .embed-container iframe, .embed-container object, .embed-container embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }</style>
+            <div class='embed-container'>
+                <iframe src='https://www.youtube.com/embed/37zT4Hj1tuo' frameborder='0' allowfullscreen></iframe>
+            </div>
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <style>.embed-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+            }
+
+            .embed-container iframe, .embed-container object, .embed-container embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }</style>
+            <div class='embed-container'>
+                <iframe src='https://www.youtube.com/embed/9t_za2xqWxE' frameborder='0' allowfullscreen></iframe>
+            </div>
+        </td>
+    </tr>
     </tbody>
 
 </table>
+
+
+
+
+<!--===============================================================================================-->
+<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="static/vendor/bootstrap/js/popper.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+    $('.js-pscroll').each(function () {
+        var ps = new PerfectScrollbar(this);
+
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
+
+
+</script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+
 <script src="https://ads-partners.coupang.com/g.js"></script>
 <script>
-	new PartnersCoupang.G({ id:326580 });
+    new PartnersCoupang.G({id: 326580});
 </script>
 </body>
