@@ -12,95 +12,116 @@
     <link rel="stylesheet" href="/static/css/style-db8ba5b9e5.min.css" type="text/css">
     <script data-ad-client="ca-pub-8009071330781097" async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 
 
 <body>
+<p id="demo"></p>
+
 <div class="Logo">
     <a href="https://matjarang-sub.herokuapp.com/"><img class="Mainpic" src="/static/img/logo.jpg"></a>
 </div>
 <div class="Category">
     <div class="HotList">
         <a class="Hottxt" href="https://matjarang-sub.herokuapp.com/HotList/">실시간인기글</a>
-        <a href="https://matjarang-sub.herokuapp.com/HoobangList/"><img class="Hotpic" src="/static/img/hoobang.png"></a>
+        <a href="https://matjarang-sub.herokuapp.com/HoobangList/"><img class="Hotpic"
+                                                                        src="/static/img/hoobang.png"></a>
     </div>
 </div>
 
 <div class="cafe_popular">
-    후방주의 인기글
+    실시간 인기글
 </div>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>제목</th>
-        <th>출처</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for HoobangList in posts %}
-        <tr style="cursor:pointer;" onClick=" location.href='{{ HoobangList.id }}' "
-            onMouseOver=" indow.status = '{{ HoobangList.id }}' " onMouseOut=" window.status = '' ">
-            <td class="title">
-                {{ HoobangList.title }} <br>{{ HoobangList.date }}</td>
-            <td class="source"><br>{{ HoobangList.source }}</td>
-        </tr>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Title</th>
+                            <th class="cell100 column2">Source</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
 
-    {% endfor %}
-    </tbody>
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                        {% for HoobangList in posts %}
+                        <tr class="row100 body" style="cursor:pointer;" onClick=" location.href='{{ HoobangList.id }}' "
+                            onMouseOver=" window.status = '{{ HoobangList.id }}' " onMouseOut=" window.status = '' ">
+                            <td class="cell100 column1">
+                                {{ HoobangList.title }} <br>{{ HoobangList.date }}
+                            </td>
+                            <td class="cell100 column2"><br>{{ HoobangList.source }}</td>
+                        </tr>
 
-</table>
-
-<!--<a class="btn btn-default pull_right">글쓰기</a>-->
-
-<div style="text-align:center;">
-    <ul class="pagination justify-content-center">
-        <!-- 이전 페이지 -->
-        {% if posts.has_previous %}
-            <li class="page-item">
-                <a href="?page=1" class="page-link">&laquo;</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="?page={{ posts.previous_page_number }}">&lt;</a>
-            </li>
-        {% endif %}
+                        {% endfor %}
+                        </tbody>
+                        <div style="text-align:center;">
+                            <ul class="pagination justify-content-center">
+                                <!-- 이전 페이지 -->
+                                {% if posts.has_previous %}
+                                <li class="page-item">
+                                    <a href="?page=1" class="page-link">&laquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ posts.previous_page_number }}">&lt;</a>
+                                </li>
+                                {% endif %}
 
 
-
-
-        <!-- 페이지 범위 및 현재 페이지 -->
-        {% for page in paginator_range %}
-            {% if posts.number == page %}
-                <li class="page-item active">
+                                <!-- 페이지 범위 및 현재 페이지 -->
+                                {% for page in paginator_range %}
+                                {% if posts.number == page %}
+                                <li class="page-item active">
                     <span class="page-link">{{ page }}
                         <span class="sr-only">(current)</span>
                     </span>
-                </li>
-            {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
 
-        <!-- 다음 페이지 -->
-
-
-
-        {% if posts.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ posts.next_page_number }}">&gt;</a>
-            </li>
-            <li class="page-item">
-                <a href="?page={{ posts.paginator.num_pages }}" class="page-link">&raquo;</a>
-            </li>
-        {% endif %}
+                                <!-- 다음 페이지 -->
 
 
-    </ul>
+                                {% if posts.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ posts.next_page_number }}">&gt;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="?page={{ posts.paginator.num_pages }}" class="page-link">&raquo;</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 <script src="https://ads-partners.coupang.com/g.js"></script>
 <script>
-	new PartnersCoupang.G({ id:326580 });
+    new PartnersCoupang.G({id: 326580});
 </script>
 </body>
+
